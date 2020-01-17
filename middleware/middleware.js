@@ -9,3 +9,25 @@ function logger(request, response, next) {
     );
     next();
   }
+
+  // action ID validation
+
+function validateActionID(request, response, next) {
+    const ID = request.params.id;
+    actionModel
+      .get(ID)
+      .then(response => {
+        if (response) {
+          next();
+        } else {
+          response.status(400).json({
+            errorMessage: `${ID} does not exist in the database.`
+          });
+        }
+      })
+      .catch(error => {
+        response.status(500).json({
+          errorMessage: `The action information could not be retrieved. ${error}`
+        });
+      });
+  };
