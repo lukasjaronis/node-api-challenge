@@ -52,3 +52,29 @@ function validateProjectID(request, response, next) {
         });
       });
   };
+
+  // Project Existence Validation
+
+function validateProject (request, response, next) {
+    const pID = request.body.project_id;
+    if (pID)
+      projectModel
+        .get(pID)
+        .then(response => {
+          if (response) {
+            next();
+          } else {
+            response.status(400).json({
+              errorMessage: `${pID} does not exist in the database.`
+            });
+          }
+        })
+        .catch(error => {
+          response.status(500).json({
+            errorMessage: `The project information could not be retrieved. ${error}`
+          });
+        });
+    else {
+      next();
+    }
+  };
