@@ -60,3 +60,38 @@ router.post('/', validateProjectBody, (request, response) => {
         })
     })
 })
+
+// PUT
+
+router.put('/:id', validateProjectID, (request, response) => {
+    projectModel
+    .update(request.params.id, request.body) 
+    .then(result => {
+        response.status(200).json(result)
+    })
+    .catch(error => {
+        response.status(500).json({
+            errorMessage: `There was an error updating your request. ${error}` 
+        })
+    })
+})
+
+// DELETE
+
+router.delete('/:id', validateProjectID, (request, response) => {
+    projectModel
+    .remove(request.params.id)
+    .then(result => {
+        response.status(200).json({
+            successMessage: `${result} has been deleted.`
+        })
+    })
+    .catch(error => {
+        response.status(500).json({
+            errorMessage: `There was an error removing your request. ${error}`
+        })
+    })
+})
+
+
+module.exports = router;
