@@ -91,3 +91,25 @@ function validateActionBody(request, response, next) {
       next();
     }
   };
+
+  // PROJECT fields required validation
+
+function validateProjectBody(request, response, next) {
+    const { name, description } = request.body;
+    if (!name || !description) {
+      response.status(400).json({
+        errorMessage: `Name and description are required fields!`
+      });
+    } else {
+      next();
+    }
+  };
+
+  module.exports = {
+    logger,
+    validateProject,
+    validateActionID,
+    validateProjectID,
+    validateActionBody,
+    validateProjectBody
+  };
