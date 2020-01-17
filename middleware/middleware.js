@@ -31,3 +31,24 @@ function validateActionID(request, response, next) {
         });
       });
   };
+
+  // project ID validation
+
+function validateProjectID(request, response, next) {
+    projectModel
+      .get(request.params.id)
+      .then(response => {
+        if (response) {
+          next()
+        } else {
+          response.status(404).json({
+            errorMessage: `Project ID is invalid.`
+          });
+        }
+      })
+      .catch(error => {
+        response.status(500).json({
+          errorMessage: `The project information could not be retrieved. ${error}`
+        });
+      });
+  };
