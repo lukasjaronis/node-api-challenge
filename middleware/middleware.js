@@ -78,3 +78,16 @@ function validateProject (request, response, next) {
       next();
     }
   };
+
+  // ACTION fields required validation
+
+function validateActionBody(request, response, next) {
+    const { notes, description, project_id } = request.body;
+    if (!notes || !description || !project_id) {
+      response.status(400).json({
+        errorMessage: `Notes, description, and project ID are required fields!`
+      });
+    } else {
+      next();
+    }
+  };
