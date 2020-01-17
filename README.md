@@ -38,15 +38,25 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
-- [ ] Mention two parts of Express that you learned about this week.
+- [x] Mention two parts of Express that you learned about this week.
 
-- [ ] Describe Middleware?
+Express lets use build fully RESTful APIs with JSON, and express is no different than React, meaning it was all built on top of node.
 
-- [ ] Describe a Resource?
+- [x] Describe Middleware?
 
-- [ ] What can the API return to help clients know if a request was successful?
+Middleware functions are like the bouncer of a club, they are called before user-defined handled is invoked. Middleware functions have full access to the request and response objects and can modify either of them.
 
-- [ ] How can we partition our application into sub-applications?
+- [x] Describe a Resource?
+
+Instead of looking at URLs as literal URL's, we look at them as URI's, a universal resource identified, meaning everything that we're linking up is a resource in theory. This allows us to theoritically organize our API and make everything a resource that has its own pathway. If you look on the network tab on Chrome, you can look at all the different resources that have their own pathways and its all accessible through the internet. 
+
+- [x] What can the API return to help clients know if a request was successful?
+
+A status response of 200 meaning ay okay. Also we can just return their request. 
+
+- [x] How can we partition our application into sub-applications?
+
+We can create endpoints/routes to the different sub-applications. 
 
 ## Minimum Viable Product
 
